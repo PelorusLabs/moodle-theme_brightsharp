@@ -26,6 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['accentcolor'] = 'Accent colour';
 $string['accentcolor_desc'] = 'The decorative edge strip on opt-in brightsharp-accent-panel cards and introductory panels. Leave blank to use pink. Does not change ordinary cards, secondary buttons, or status colours.';
+$string['choosereadme'] = 'BrightSharp is a Boost-based Moodle theme with a bold, bright neubrutalist design.';
 $string['linkcolor'] = 'Link colour';
 $string['linkcolor_desc'] = 'The default colour for links on neutral surfaces, independent of the brand colour. Hover colours are derived automatically. Leave blank to use dark blue.';
 $string['outlinecolor'] = 'Outline colour';
@@ -37,6 +38,7 @@ $string['primarybuttoncolor'] = 'Primary button colour';
 $string['primarybuttoncolor_desc'] = 'The colour used for filled and outlined primary buttons, independently of the brand colour. Leave blank to follow the primary brand colour.';
 $string['primarycolor'] = 'Primary brand colour';
 $string['primarycolor_desc'] = 'The primary brand colour used throughout the theme. Leave blank to use the preset default.';
+$string['privacy:metadata'] = 'The BrightSharp theme does not store any personal data.';
 $string['shadowsizelarge'] = 'Large shadow size';
 $string['shadowsizelarge_desc'] = 'The shadow offset in pixels for dropdowns, popovers, dialogs, and large raised cards. Defaults to 4. Enter a non-negative number; 0 removes this tier of offset shadows. Focus outlines are unchanged.';
 $string['shadowsizemedium'] = 'Medium shadow size';

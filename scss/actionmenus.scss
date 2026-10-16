@@ -1,0 +1,41 @@
+.action-menu {
+    .dropdown-menu {
+        @include brightsharp-dropdown-panel;
+
+        .dropdown-item {
+            border-radius: 0;
+            white-space: normal;
+            overflow-wrap: anywhere;
+
+            &:focus-visible,
+            &.focus,
+            &.dropdown-item-outline:focus-within {
+                @include brightsharp-control-focus;
+                outline-offset: -3px;
+            }
+        }
+    }
+
+    .dropdown-subpanel.content-displayed {
+        background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+    }
+
+    .dropdown-item a {
+        color: inherit;
+    }
+}
+
+@media (forced-colors: active) {
+    .action-menu .dropdown-menu {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+        box-shadow: none;
+
+        .dropdown-item {
+            &:focus-visible,
+            &.focus,
+            &.dropdown-item-outline:focus-within {
+                outline-color: Highlight;
+            }
+        }
+    }
+}

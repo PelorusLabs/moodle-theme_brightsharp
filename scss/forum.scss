@@ -1,0 +1,72 @@
+.forumpost {
+    // Core posts use the important border utility; supply its width and colour tokens.
+    --#{$prefix}border-width: #{$brightsharp-border-width};
+    --#{$prefix}border-color: #{$brightsharp-outline-color};
+
+    background-color: $brightsharp-surface-color;
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: none;
+
+    &.unread {
+        border-inline-start-width: $brightsharp-border-width * 2;
+    }
+
+    .subject,
+    [data-region-content="forum-post-core-subject"] {
+        font-family: $headings-font-family;
+        font-weight: $font-weight-bold;
+    }
+}
+
+.path-mod-forum {
+    .forumheaderlist {
+        border: $brightsharp-border-width solid $table-border-color;
+    }
+
+    .discussion-list > tbody > tr > th.topic {
+        font-weight: $font-weight-bold;
+    }
+
+    .forum-post-container:focus-visible,
+    .forumpost:focus-visible {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+
+    .nested-v2-display-mode,
+    &.nested-v2-display-mode {
+        .firstpost[data-content="forum-post"] {
+            background-color: $brightsharp-surface-color;
+            border: $brightsharp-border-width solid $brightsharp-outline-color;
+            border-radius: 0;
+            padding: $spacer;
+            box-shadow: none;
+        }
+
+        .replies-container .forum-post-container {
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .rating-aggregate-container,
+        .ratinginput {
+            border-radius: 0;
+        }
+    }
+}
+
+@media (forced-colors: active) {
+    .forumpost,
+    .path-mod-forum .forumheaderlist,
+    .path-mod-forum .nested-v2-display-mode .firstpost[data-content="forum-post"],
+    .path-mod-forum.nested-v2-display-mode .firstpost[data-content="forum-post"] {
+        --#{$prefix}border-color: CanvasText; // stylelint-disable-line csstree/validator
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+    }
+
+    .path-mod-forum .forum-post-container:focus-visible,
+    .path-mod-forum .forumpost:focus-visible {
+        outline-color: Highlight;
+    }
+}

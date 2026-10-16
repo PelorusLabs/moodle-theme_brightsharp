@@ -1,0 +1,30 @@
+#page-user-profile .node_category {
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+    background-color: $brightsharp-surface-color;
+}
+
+.path-user .filter-group {
+    border-color: $brightsharp-outline-color !important; // stylelint-disable-line declaration-no-important
+    border-radius: 0 !important; // stylelint-disable-line declaration-no-important
+    background-color: $brightsharp-surface-color !important; // stylelint-disable-line declaration-no-important
+
+    [data-filterregion="filter"] > fieldset > div {
+        border-color: $brightsharp-outline-color !important; // stylelint-disable-line declaration-no-important
+        border-radius: 0 !important; // stylelint-disable-line declaration-no-important
+        background-color: $brightsharp-surface-color !important; // stylelint-disable-line declaration-no-important
+    }
+}
+
+.path-user [data-type="bulkactions"],
+.user-enroller-panel {
+    border-radius: 0;
+    border-color: $brightsharp-outline-color;
+}
+
+@media (forced-colors: active) {
+    #page-user-profile .node_category,
+    .user-enroller-panel {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+    }
+}

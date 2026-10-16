@@ -1,0 +1,188 @@
+.navbar.fixed-top {
+    // The core template uses bg-body, so supply its local colour token.
+    --#{$prefix}body-bg: #{$brightsharp-outline-color};
+    --#{$prefix}body-bg-rgb: #{to-rgb($brightsharp-outline-color)};
+    --#{$prefix}navbar-color: #fff;
+    --#{$prefix}navbar-hover-color: #fff;
+    --#{$prefix}navbar-active-color: #fff;
+    --#{$prefix}navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#fff' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))};
+
+    color: #fff;
+    border-bottom: $brightsharp-border-width solid $brightsharp-outline-color;
+    box-shadow: none;
+
+    .navbar-brand {
+        font-family: $headings-font-family;
+        font-weight: $font-weight-bold;
+        color: #fff;
+    }
+
+    #usernavigation {
+        > .editmode-switch-form,
+        .popover-region-toggle,
+        .usermenu .dropdown-toggle,
+        .langmenu .dropdown-toggle {
+            color: #fff;
+        }
+    }
+
+    .primary-navigation {
+        // Fit the thicker border within Boost's existing fixed-header height.
+        .navigation {
+            height: $navbar-height + 1px - $brightsharp-border-width;
+        }
+
+        .nav-tabs {
+            background-color: transparent;
+            align-items: center;
+            gap: $spacer * .5;
+            padding-inline-end: $brightsharp-shadow-medium;
+        }
+
+        .nav-link {
+            height: auto;
+            margin-block: .5rem;
+            padding-block: .35rem;
+            color: #fff;
+            font-weight: $font-weight-semibold;
+            border-radius: 0;
+            border: 2px solid transparent;
+
+            &:hover,
+            &:focus {
+                color: #fff;
+                background-color: mix(#fff, $brightsharp-outline-color, 15%);
+                border-color: transparent;
+            }
+
+            &.active,
+            &.active:hover,
+            &.active:focus {
+                color: color-contrast($primary);
+                background-color: $primary;
+                border-color: #000;
+                box-shadow: $brightsharp-shadow-medium $brightsharp-shadow-medium 0 #fff;
+            }
+
+            &:focus-visible,
+            &.focus {
+                outline: 3px solid #fff;
+                outline-offset: -3px;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .usermenu,
+    .langmenu,
+    .primary-navigation {
+        .dropdown-menu {
+            @include brightsharp-dropdown-panel;
+
+            .dropdown-item {
+                border-radius: 0;
+
+                &.active,
+                &[aria-current="true"] {
+                    color: color-contrast($primary);
+                    background-color: $primary;
+                }
+
+                &:focus-visible {
+                    outline: 3px solid $brightsharp-focus-color;
+                    outline-offset: -3px;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    .primary-navigation .dropdownmoremenu .dropdown-menu .dropdown-menu {
+        border: 0;
+        box-shadow: none;
+    }
+}
+
+.drawer-primary {
+    background-color: $brightsharp-outline-color;
+    color: #fff;
+    border-inline-end: $brightsharp-border-width solid $brightsharp-outline-color;
+
+    .sitename {
+        font-family: $headings-font-family;
+        font-weight: $font-weight-bold;
+    }
+
+    .drawerheader .btn {
+        color: #fff;
+    }
+
+    .drawerheader {
+        padding-inline-start: $spacer;
+        border-bottom: $brightsharp-border-width solid $brightsharp-outline-color;
+    }
+
+    .drawercontent .list-group-item {
+        color: #fff;
+        background-color: $brightsharp-outline-color;
+        border-color: $brightsharp-outline-color;
+        border-radius: 0;
+        font-weight: $font-weight-semibold;
+
+        &.list-group-item-action:hover,
+        &.list-group-item-action:focus {
+            background-color: mix(#fff, $brightsharp-outline-color, 15%);
+        }
+
+        &.active,
+        &.active:hover,
+        &.active:focus {
+            color: color-contrast($primary);
+            background-color: $primary;
+            border: 2px solid #000;
+            margin: .5rem $spacer;
+            box-shadow: $brightsharp-shadow-medium $brightsharp-shadow-medium 0 #fff;
+        }
+
+        &:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: -3px;
+            box-shadow: none;
+        }
+    }
+}
+
+@media (forced-colors: active) {
+    .navbar.fixed-top,
+    .drawer-primary,
+    .drawer-primary .drawerheader {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+    }
+
+    .navbar.fixed-top {
+        .usermenu,
+        .langmenu,
+        .primary-navigation {
+            .dropdown-menu {
+                border-color: CanvasText; // stylelint-disable-line csstree/validator
+                box-shadow: none;
+            }
+        }
+
+        .primary-navigation .nav-link.active {
+            border-bottom-color: Highlight;
+            box-shadow: none;
+        }
+    }
+
+    .drawer-primary .drawercontent .list-group-item.active {
+        box-shadow: none;
+        border-color: Highlight;
+    }
+
+    .navbar.fixed-top .primary-navigation .nav-link:focus-visible,
+    .navbar.fixed-top .dropdown-menu .dropdown-item:focus-visible,
+    .drawer-primary .list-group-item:focus-visible {
+        outline-color: Highlight;
+    }
+}

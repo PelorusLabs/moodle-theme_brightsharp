@@ -1,0 +1,75 @@
+.modal {
+    --#{$prefix}modal-color: #{$brightsharp-text-color};
+    --#{$prefix}modal-bg: #{$brightsharp-surface-color};
+    --#{$prefix}modal-border-width: #{$brightsharp-border-width};
+    --#{$prefix}modal-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}modal-border-radius: 0;
+    --#{$prefix}modal-inner-border-radius: 0;
+    --#{$prefix}modal-box-shadow: #{$brightsharp-shadow-large} #{$brightsharp-shadow-large} 0 #{$brightsharp-outline-color};
+    --#{$prefix}modal-header-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}modal-footer-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}modal-footer-bg: transparent;
+
+    .modal-content {
+        box-shadow: var(--#{$prefix}modal-box-shadow);
+    }
+
+    .modal-title {
+        font-family: $headings-font-family;
+        font-weight: $font-weight-bold;
+    }
+
+    .modal-dialog[tabindex="0"] {
+        &:focus .modal-content,
+        &.focus .modal-content {
+            @include brightsharp-control-focus;
+            outline-offset: -3px;
+            border-radius: 0;
+        }
+    }
+
+    .btn-close {
+        border-radius: 0;
+        box-shadow: none;
+
+        &:hover {
+            outline: 2px solid currentColor;
+            outline-offset: -2px;
+        }
+
+        &:focus-visible {
+            @include brightsharp-control-focus;
+            outline-offset: -3px;
+        }
+    }
+}
+
+// Fullscreen dialogs have no floating edge to elevate.
+@each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $postfix: if($infix != "", $infix + "-down", "");
+
+    @include media-breakpoint-down($breakpoint) {
+        .modal-fullscreen#{$postfix} .modal-content {
+            box-shadow: none;
+        }
+    }
+}
+
+@media (forced-colors: active) {
+    .modal {
+        --#{$prefix}modal-border-color: CanvasText; // stylelint-disable-line csstree/validator
+        --#{$prefix}modal-header-border-color: CanvasText; // stylelint-disable-line csstree/validator
+        --#{$prefix}modal-footer-border-color: CanvasText; // stylelint-disable-line csstree/validator
+        --#{$prefix}modal-box-shadow: none;
+
+        .btn-close:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+
+    .modal-dialog[tabindex="0"]:focus .modal-content,
+    .modal-dialog[tabindex="0"].focus .modal-content {
+        outline-color: Highlight;
+    }
+}

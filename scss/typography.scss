@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Space Grotesk";
+    src: url("[[font:theme|space-grotesk-variable.woff2]]") format("woff2");
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("[[font:theme|inter-variable.woff2]]") format("woff2");
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+.card-title,
+.sectionname {
+    font-family: $headings-font-family;
+}

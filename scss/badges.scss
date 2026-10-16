@@ -1,0 +1,15 @@
+.badge:not(.count-container) {
+    --#{$prefix}badge-border-radius: 0;
+
+    border-radius: 0;
+}
+
+// Core current-section and status labels explicitly request the pill utility.
+.badge.rounded-pill:not(.count-container) {
+    border-radius: 0 !important; // stylelint-disable-line declaration-no-important
+}
+
+.path-mod-forum .nested-v2-display-mode .badge,
+.path-mod-forum.nested-v2-display-mode .badge {
+    border-radius: 0;
+}

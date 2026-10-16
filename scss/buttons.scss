@@ -1,0 +1,238 @@
+$brightsharp-button-border-width: $brightsharp-border-width !default;
+$brightsharp-button-shadow-offset: $brightsharp-shadow-medium !default;
+$brightsharp-button-shadow-small-offset: $brightsharp-shadow-small !default;
+
+.btn-primary {
+    @include button-variant($primary-button-color, $primary-button-color);
+}
+
+.btn-outline-primary {
+    @include button-outline-variant(
+        $primary-button-color,
+        $color-hover: color-contrast($primary-button-color)
+    );
+    --#{$prefix}btn-color: #{color-contrast($brightsharp-surface-color)};
+    --#{$prefix}btn-bg: #{$brightsharp-surface-color};
+}
+
+.btn:not(.btn-link):not(.btn-icon) {
+    --#{$prefix}btn-border-width: #{$brightsharp-button-border-width};
+    --#{$prefix}btn-border-radius: 0;
+    --#{$prefix}btn-font-weight: #{$font-weight-bold};
+    --brightsharp-button-shadow-offset: #{$brightsharp-button-shadow-offset};
+
+    border-color: $brightsharp-outline-color;
+    border-radius: 0;
+    background-image: none;
+    box-shadow: var(--brightsharp-button-shadow-offset) var(--brightsharp-button-shadow-offset) 0 $brightsharp-outline-color;
+
+    &:hover {
+        border-color: $brightsharp-outline-color;
+        box-shadow: calc(var(--brightsharp-button-shadow-offset) * .6) calc(var(--brightsharp-button-shadow-offset) * .6) 0 $brightsharp-outline-color;
+    }
+
+    &:active,
+    &.active,
+    &.show,
+    .btn-check:checked + & {
+        border-color: $brightsharp-outline-color;
+        box-shadow: calc(var(--brightsharp-button-shadow-offset) * .2) calc(var(--brightsharp-button-shadow-offset) * .2) 0 $brightsharp-outline-color;
+    }
+
+    &:focus-visible,
+    &.focus,
+    .btn-check:focus-visible + & {
+        border-color: $brightsharp-outline-color;
+        @include brightsharp-control-focus;
+    }
+
+    &:disabled,
+    &.disabled,
+    fieldset:disabled & {
+        border-color: $brightsharp-outline-color;
+        box-shadow: none;
+    }
+
+    &.btn-sm {
+        --brightsharp-button-shadow-offset: #{$brightsharp-button-shadow-small-offset};
+    }
+}
+
+.tertiary-navigation .tertiary-navigation-selector .btn.dropdown-toggle {
+    padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
+}
+
+// The initials widget uses Bootstrap's important p-0 utility.
+.initials-selector .initialswidget.btn.dropdown-toggle {
+    padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x) !important; // stylelint-disable-line declaration-no-important
+}
+
+// Dropdown-dialog filter triggers also use the important p-0 utility.
+.navitem .grade-search > .gradesearchwidget.btn.dropdown-toggle,
+.navitem .extrafilters > .btn.dropdown-toggle[data-for="dropdowndialog_button"] {
+    padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x) !important; // stylelint-disable-line declaration-no-important
+}
+
+.content-bank-container .cb-toolbar-container > .btn[data-action="viewgrid"] + .btn[data-action="viewlist"] {
+    margin-inline-start: calc(#{$spacer * .5} + #{$brightsharp-shadow-medium});
+}
+
+// Keep joined controls aligned and avoid shadows overlapping adjacent buttons.
+.btn-group,
+.btn-group-vertical {
+    > .btn:not(.btn-link):not(.btn-icon) {
+        box-shadow: none;
+    }
+}
+
+.btn-group-sm > .btn:not(.btn-link):not(.btn-icon) {
+    --brightsharp-button-shadow-offset: #{$brightsharp-button-shadow-small-offset};
+}
+
+.content-bank-container .cb-toolbar-container {
+    > .btn[data-action="viewgrid"],
+    > .btn[data-action="viewlist"],
+    > .btn-group > .btn[data-action="Add-content"] {
+        --brightsharp-contentbank-shadow-factor: 1;
+
+        box-shadow: calc(var(--brightsharp-button-shadow-offset) * var(--brightsharp-contentbank-shadow-factor))
+            calc(var(--brightsharp-button-shadow-offset) * var(--brightsharp-contentbank-shadow-factor))
+            0 $brightsharp-outline-color;
+
+        &:hover {
+            --brightsharp-contentbank-shadow-factor: .6;
+        }
+
+        &:active,
+        &.show {
+            --brightsharp-contentbank-shadow-factor: .2;
+        }
+
+        &:focus-visible,
+        &.focus,
+        &:disabled,
+        &.disabled,
+        fieldset:disabled & {
+            box-shadow: none;
+        }
+
+        @media (forced-colors: active) {
+            box-shadow: none;
+        }
+    }
+}
+
+#page .btn.btn-icon {
+    --#{$prefix}btn-border-width: 2px;
+    --#{$prefix}btn-border-radius: 0;
+
+    border: 2px solid transparent;
+    border-radius: 0;
+    box-shadow: none;
+
+    &:hover,
+    &:active,
+    &.active,
+    &.show,
+    &[aria-expanded="true"] {
+        border-color: $brightsharp-outline-color;
+        box-shadow: none;
+    }
+
+    &:focus-visible,
+    &.focus {
+        @include brightsharp-control-focus;
+    }
+
+    &:disabled,
+    &.disabled,
+    &[aria-disabled="true"] {
+        border-color: transparent;
+        box-shadow: none;
+    }
+}
+
+#page fieldset:disabled .btn.btn-icon {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+// Neutral utility icons should not replace semantic or collapse-button colours.
+$brightsharp-neutral-icon: "#page .btn.btn-icon:not(.btn-link):not(.icons-collapse-expand):not(.btn-subtle-body)";
+@each $color, $value in $theme-colors {
+    $brightsharp-neutral-icon: $brightsharp-neutral-icon + ":not(.btn-#{$color}):not(.btn-outline-#{$color}):not(.btn-subtle-#{$color})";
+}
+
+#{$brightsharp-neutral-icon} {
+    --#{$prefix}btn-color: #{$brightsharp-text-color};
+    --#{$prefix}btn-bg: transparent;
+    --#{$prefix}btn-hover-color: #{$brightsharp-text-color};
+    --#{$prefix}btn-hover-bg: #{mix($brightsharp-outline-color, $brightsharp-surface-color, 10%)};
+    --#{$prefix}btn-active-color: #{$brightsharp-text-color};
+    --#{$prefix}btn-active-bg: #{mix($brightsharp-outline-color, $brightsharp-surface-color, 10%)};
+    --#{$prefix}btn-disabled-color: #{$brightsharp-text-color};
+    --#{$prefix}btn-disabled-bg: transparent;
+
+    &[aria-expanded="true"]:not(:disabled):not(.disabled):not([aria-disabled="true"]) {
+        color: $brightsharp-text-color;
+        background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+    }
+}
+
+.navbar .btn:not(.btn-link):not(.btn-icon) {
+    --#{$prefix}btn-border-width: 0;
+
+    &,
+    &:hover,
+    &:active,
+    &.active,
+    &.show,
+    &:disabled,
+    &.disabled {
+        border-width: 0;
+        box-shadow: none;
+    }
+
+    &:focus-visible,
+    &.focus {
+        @include brightsharp-control-focus;
+    }
+}
+
+@media (forced-colors: active) {
+    #page .btn.btn-icon {
+        &:hover,
+        &:active,
+        &.active,
+        &.show,
+        &[aria-expanded="true"] {
+            border-color: ButtonText;
+        }
+
+        &:focus-visible,
+        &.focus {
+            outline-color: Highlight;
+        }
+
+        &:disabled,
+        &.disabled,
+        &[aria-disabled="true"] {
+            border-color: transparent;
+        }
+    }
+
+    #page fieldset:disabled .btn.btn-icon {
+        border-color: transparent;
+    }
+
+    .btn:not(.btn-link):not(.btn-icon) {
+        border-color: ButtonText;
+        box-shadow: none;
+
+        &:focus-visible,
+        &.focus,
+        .btn-check:focus-visible + & {
+            outline-color: Highlight;
+        }
+    }
+}

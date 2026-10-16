@@ -1,0 +1,110 @@
+.secondary-navigation .navigation {
+    background-color: transparent;
+    border-bottom: $brightsharp-border-width solid $brightsharp-outline-color;
+    box-shadow: none;
+
+    .nav-tabs {
+        background-color: transparent;
+        align-items: center;
+        gap: $spacer * .5;
+        padding-inline-end: $brightsharp-shadow-small;
+
+        > .nav-item > .nav-link {
+            // Retain Moremenu's fixed row height for its overflow calculations.
+            height: calc(#{$moremenu-height - $brightsharp-border-width} - #{$spacer * .5});
+            margin-block: $spacer * .25;
+            color: $brightsharp-text-color;
+            background-color: transparent;
+            font-weight: $font-weight-semibold;
+            border: 2px solid transparent;
+            border-radius: 0;
+            box-shadow: none;
+
+            &:hover,
+            &:focus,
+            &.show {
+                color: $brightsharp-text-color;
+                background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+                border-color: $brightsharp-outline-color;
+            }
+
+            &.active,
+            &.active:hover,
+            &.active:focus {
+                color: color-contrast($primary);
+                background-color: $primary;
+                border-color: $brightsharp-outline-color;
+                box-shadow: $brightsharp-shadow-small $brightsharp-shadow-small 0 $brightsharp-outline-color;
+            }
+
+            &:focus-visible,
+            &.focus {
+                @include brightsharp-control-focus;
+                outline-offset: -3px;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        @include brightsharp-dropdown-panel;
+
+        .dropdown-item {
+            border-radius: 0;
+            white-space: normal;
+            overflow-wrap: anywhere;
+
+            &.active,
+            &[aria-current="true"] {
+                color: color-contrast($primary);
+                background-color: $primary;
+            }
+
+            &:focus-visible,
+            &.focus {
+                @include brightsharp-control-focus;
+                outline-offset: -3px;
+            }
+        }
+    }
+
+    .dropdownmoremenu .dropdown-menu .dropdown-menu {
+        border: 0;
+        box-shadow: none;
+
+        .dropdown-item {
+            background-color: transparent;
+
+            &:hover,
+            &:focus,
+            &.active,
+            &[aria-current="true"] {
+                color: color-contrast($primary);
+                background-color: $primary;
+            }
+        }
+    }
+}
+
+@media (forced-colors: active) {
+    .secondary-navigation .navigation {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+
+        .nav-tabs > .nav-item > .nav-link.active {
+            border-color: Highlight;
+            box-shadow: none;
+        }
+
+        .dropdown-menu {
+            border-color: CanvasText; // stylelint-disable-line csstree/validator
+            box-shadow: none;
+        }
+
+        .nav-tabs > .nav-item > .nav-link,
+        .dropdown-menu .dropdown-item {
+            &:focus-visible,
+            &.focus {
+                outline-color: Highlight;
+            }
+        }
+    }
+}

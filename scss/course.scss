@@ -1,0 +1,55 @@
+.course-content .section-list > .course-section {
+    > .section-item {
+        padding: $spacer;
+        background-color: $brightsharp-surface-color;
+        border: $brightsharp-border-width solid $brightsharp-outline-color;
+        border-radius: 0;
+        box-shadow: none;
+
+        > .course-section-header {
+            padding-bottom: $spacer * .75;
+            margin-bottom: $spacer * .75;
+            border-bottom: 2px solid $brightsharp-outline-color;
+
+            .sectionname {
+                color: $brightsharp-text-color;
+                font-weight: $font-weight-bold;
+                overflow-wrap: anywhere;
+
+                > a {
+                    color: $brightsharp-text-color;
+                }
+            }
+        }
+    }
+
+    &.hidden > .section-item,
+    &.orphaned > .section-item {
+        background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+    }
+
+    &.current > .section-item::before {
+        border-left: 0;
+        background-color: $primary;
+        width: $brightsharp-border-width;
+        left: auto;
+        inset-inline-start: -($brightsharp-border-width + 5px);
+        inset-inline-end: auto;
+    }
+}
+
+@media (forced-colors: active) {
+    .course-content .section-list > .course-section {
+        > .section-item {
+            border-color: CanvasText; // stylelint-disable-line csstree/validator
+
+            > .course-section-header {
+                border-color: CanvasText; // stylelint-disable-line csstree/validator
+            }
+        }
+
+        &.current > .section-item::before {
+            background-color: Highlight;
+        }
+    }
+}

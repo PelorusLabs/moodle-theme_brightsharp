@@ -1,0 +1,314 @@
+// TinyMCE loads its skin asynchronously; specificity must not depend on load order.
+@mixin brightsharp-editor-focus {
+    @include brightsharp-control-focus;
+
+    @media (forced-colors: active) {
+        outline-color: Highlight;
+    }
+}
+
+.tox.tox {
+    --tox-private-font-stack: #{$font-family-sans-serif};
+
+    &.tox-tinymce:not(.tox-tinymce-inline) {
+        border: $brightsharp-border-width solid $brightsharp-outline-color;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    &.tox-tinymce .tox-editor-header:not(.tox-editor-header--empty),
+    &.tox-tinymce.tox-tinymce--toolbar-sticky-on .tox-editor-header:not(.tox-editor-header--empty) {
+        background-color: $brightsharp-surface-color;
+        border-bottom: 2px solid $brightsharp-outline-color;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    &.tox-tinymce.tox-tinymce--toolbar-bottom .tox-editor-header:not(.tox-editor-header--empty) {
+        border-bottom: 0;
+        border-top: 2px solid $brightsharp-outline-color;
+    }
+
+    .tox-menubar,
+    .tox-toolbar-overlord,
+    .tox-toolbar,
+    .tox-toolbar__primary,
+    .tox-toolbar__overflow,
+    .tox-statusbar,
+    .tox-dialog,
+    .tox-dialog__header,
+    .tox-dialog__footer {
+        background-color: $brightsharp-surface-color;
+    }
+
+    .tox-statusbar {
+        color: $brightsharp-text-color;
+        border-top-color: $brightsharp-outline-color;
+    }
+
+    .tox-label,
+    .tox-toolbar-label {
+        color: $brightsharp-text-color;
+    }
+
+    .tox-statusbar a:not([aria-disabled="true"]):not(:disabled),
+    .tox-statusbar .tox-statusbar__path-item:not([aria-disabled="true"]):not(:disabled),
+    .tox-statusbar .tox-statusbar__wordcount:not([aria-disabled="true"]):not(:disabled) {
+        color: $brightsharp-text-color;
+
+        &:hover,
+        &:focus {
+            color: $brightsharp-text-color;
+        }
+    }
+
+    .tox-toolbar,
+    .tox-toolbar__primary,
+    .tox-toolbar__overflow {
+        background-image: repeating-linear-gradient($brightsharp-outline-color 0 1px, transparent 1px 39px);
+    }
+
+    .tox-tbtn,
+    .tox-mbtn,
+    .tox-split-button {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .tox-tbtn:not(.tox-tbtn--disabled):not(:disabled),
+    .tox-mbtn:not(.tox-mbtn--disabled):not(:disabled) {
+        background-color: $brightsharp-surface-color;
+        color: $brightsharp-text-color;
+
+        &:hover {
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+        }
+
+        &:active,
+        &.tox-tbtn--enabled,
+        &.tox-tbtn--active,
+        &.tox-mbtn--active {
+            background-color: $primary;
+            color: color-contrast($primary);
+        }
+    }
+
+    .tox-tbtn .tox-tbtn__icon-wrap > svg {
+        fill: currentColor;
+    }
+
+    .tox-tbtn:focus,
+    .tox-mbtn:focus,
+    .tox-dialog__body-nav-item:focus {
+        @include brightsharp-editor-focus;
+        outline-offset: -3px;
+    }
+
+    .tox-tbtn:focus::after,
+    .tox-mbtn:focus::after {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .tox-menu,
+    .tox-pop__dialog,
+    .tox-dialog {
+        background-color: $brightsharp-surface-color;
+        color: $brightsharp-text-color;
+        border: $brightsharp-border-width solid $brightsharp-outline-color;
+        border-radius: 0;
+        box-shadow: $brightsharp-shadow-large $brightsharp-shadow-large 0 $brightsharp-outline-color;
+    }
+
+    .tox-collection--list .tox-collection__group {
+        border-color: $brightsharp-outline-color;
+    }
+
+    .tox-collection--list .tox-collection__item:not(.tox-collection__item--state-disabled) {
+        border-radius: 0;
+        color: $brightsharp-text-color;
+    }
+
+    .tox-collection--list .tox-collection__item--enabled:not(.tox-collection__item--state-disabled) {
+        background-color: mix($primary, $brightsharp-surface-color, 15%);
+        color: $brightsharp-text-color;
+    }
+
+    .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
+        background-color: $primary;
+        color: color-contrast($primary);
+    }
+
+    .tox-dialog__header {
+        color: $brightsharp-text-color;
+        border-bottom: 2px solid $brightsharp-outline-color;
+        padding-bottom: $spacer * .5;
+    }
+
+    .tox-dialog__footer {
+        border-top: 2px solid $brightsharp-outline-color;
+    }
+
+    .tox-dialog__title {
+        font-family: $headings-font-family;
+        font-weight: $font-weight-bold;
+    }
+
+    .tox-dialog__body-nav-item {
+        color: $brightsharp-text-color;
+    }
+
+    .tox-dialog__body-nav-item--active {
+        border-bottom-color: $brightsharp-outline-color;
+        background-color: $primary;
+        color: color-contrast($primary);
+    }
+
+    .tox-textfield:not(.tox-invalid),
+    .tox-toolbar-textfield,
+    .tox-textarea,
+    .tox-textarea-wrap .tox-textarea,
+    .tox-listboxfield .tox-listbox--select,
+    .tox-selectfield select {
+        background-color: $brightsharp-surface-color;
+        color: $brightsharp-text-color;
+        border: 2px solid $brightsharp-outline-color;
+        border-radius: 0;
+        font-family: $font-family-sans-serif;
+        box-shadow: none;
+
+        &:disabled {
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+            color: mix($brightsharp-text-color, $brightsharp-surface-color, 65%);
+        }
+
+        &:focus {
+            @include brightsharp-editor-focus;
+        }
+    }
+
+    .tox-button:not(.tox-button--naked):not(.tox-button--icon) {
+        background-color: $primary-button-color;
+        color: color-contrast($primary-button-color);
+        border: 2px solid $brightsharp-outline-color;
+        border-radius: 0;
+        font-family: $font-family-sans-serif;
+        box-shadow: none;
+
+        &.tox-button--secondary {
+            background-color: $brightsharp-surface-color;
+            color: $brightsharp-text-color;
+        }
+
+        &:hover:not(:disabled),
+        &:active:not(:disabled) {
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+            color: $brightsharp-text-color;
+        }
+
+        &:disabled {
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+            color: mix($brightsharp-text-color, $brightsharp-surface-color, 65%);
+        }
+
+        &::before {
+            border-radius: 0;
+            box-shadow: none;
+        }
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+        @include brightsharp-editor-focus;
+        outline-offset: -3px;
+    }
+}
+
+div.editor_atto_toolbar {
+    background-color: $brightsharp-surface-color;
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+
+    div.atto_group {
+        background-color: $brightsharp-surface-color;
+        border-color: $brightsharp-outline-color;
+        border-radius: 0;
+    }
+
+    button {
+        border-radius: 0;
+        box-shadow: none;
+
+        .icon {
+            color: $brightsharp-text-color;
+        }
+
+        &:hover:not(:disabled) {
+            background-image: none;
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+        }
+
+        &:active:not(:disabled),
+        &.highlight:not(:disabled) {
+            background-image: none;
+            background-color: $primary;
+
+            .icon {
+                color: color-contrast($primary);
+            }
+        }
+
+        &:focus-visible {
+            @include brightsharp-editor-focus;
+            outline-offset: -3px;
+        }
+
+        &:disabled {
+            background-image: none;
+            background-color: transparent;
+        }
+    }
+}
+
+@media (forced-colors: active) {
+    .tox.tox {
+        &.tox-tinymce:not(.tox-tinymce-inline),
+        &.tox-tinymce .tox-editor-header:not(.tox-editor-header--empty),
+        &.tox-tinymce.tox-tinymce--toolbar-sticky-on .tox-editor-header:not(.tox-editor-header--empty),
+        .tox-menu,
+        .tox-pop__dialog,
+        .tox-dialog,
+        .tox-dialog__header,
+        .tox-dialog__footer {
+            border-color: CanvasText; // stylelint-disable-line csstree/validator
+            box-shadow: none;
+        }
+
+        .tox-dialog__body-nav-item--active {
+            border-bottom-color: Highlight;
+        }
+
+        .tox-tbtn:focus,
+        .tox-mbtn:focus,
+        .tox-dialog__body-nav-item:focus,
+        button:focus-visible,
+        a:focus-visible,
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline-color: Highlight;
+        }
+    }
+
+    div.editor_atto_toolbar {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+
+        div.atto_group {
+            border-color: CanvasText; // stylelint-disable-line csstree/validator
+        }
+
+        button:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

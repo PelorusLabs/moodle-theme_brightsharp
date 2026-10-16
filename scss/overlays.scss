@@ -1,0 +1,58 @@
+.tooltip {
+    --#{$prefix}tooltip-border-radius: 0;
+    --#{$prefix}tooltip-bg: #{$brightsharp-outline-color};
+    --#{$prefix}tooltip-color: #{color-contrast($brightsharp-outline-color)};
+    --#{$prefix}tooltip-opacity: 1;
+
+    .tooltip-inner {
+        border: 2px solid $brightsharp-outline-color;
+        box-shadow: none;
+    }
+}
+
+.popover {
+    --#{$prefix}popover-bg: #{$brightsharp-surface-color};
+    --#{$prefix}popover-border-width: #{$brightsharp-border-width};
+    --#{$prefix}popover-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}popover-border-radius: 0;
+    --#{$prefix}popover-inner-border-radius: 0;
+    --#{$prefix}popover-box-shadow: #{$brightsharp-shadow-large} #{$brightsharp-shadow-large} 0 #{$brightsharp-outline-color};
+    --#{$prefix}popover-header-bg: #{$brightsharp-surface-color};
+    --#{$prefix}popover-header-color: #{$brightsharp-text-color};
+    --#{$prefix}popover-body-color: #{$brightsharp-text-color};
+
+    box-shadow: var(--#{$prefix}popover-box-shadow);
+
+    .popover-header {
+        font-family: $headings-font-family;
+        font-weight: $font-weight-bold;
+        border-bottom-color: $brightsharp-outline-color;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+}
+
+@media (forced-colors: active) {
+    .tooltip {
+        --#{$prefix}tooltip-bg: Canvas;
+        --#{$prefix}tooltip-color: CanvasText; // stylelint-disable-line csstree/validator
+
+        .tooltip-inner {
+            border-color: CanvasText; // stylelint-disable-line csstree/validator
+        }
+    }
+
+    .popover {
+        --#{$prefix}popover-border-color: CanvasText; // stylelint-disable-line csstree/validator
+        --#{$prefix}popover-box-shadow: none;
+
+        a:focus-visible,
+        button:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

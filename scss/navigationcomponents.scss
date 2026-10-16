@@ -1,0 +1,94 @@
+.pagination {
+    --#{$prefix}pagination-color: #{$brightsharp-text-color};
+    --#{$prefix}pagination-bg: #{$brightsharp-surface-color};
+    --#{$prefix}pagination-border-width: 2px;
+    --#{$prefix}pagination-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}pagination-border-radius: 0;
+    --#{$prefix}pagination-hover-color: #{$brightsharp-text-color};
+    --#{$prefix}pagination-hover-bg: #{mix($brightsharp-outline-color, $brightsharp-surface-color, 10%)};
+    --#{$prefix}pagination-hover-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}pagination-focus-color: #{$brightsharp-text-color};
+    --#{$prefix}pagination-focus-bg: #{$brightsharp-surface-color};
+    --#{$prefix}pagination-focus-box-shadow: none;
+    --#{$prefix}pagination-active-bg: #{$primary};
+    --#{$prefix}pagination-active-color: #{color-contrast($primary)};
+    --#{$prefix}pagination-active-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}pagination-disabled-bg: #{$brightsharp-surface-color};
+    --#{$prefix}pagination-disabled-color: #{mix($brightsharp-text-color, $brightsharp-surface-color, 65%)};
+    --#{$prefix}pagination-disabled-border-color: #{$brightsharp-outline-color};
+
+    .page-link {
+        border-radius: 0;
+        font-weight: $font-weight-semibold;
+        box-shadow: none;
+
+        &:focus-visible {
+            @include brightsharp-control-focus;
+            outline-offset: -3px;
+        }
+    }
+
+    .page-item:not(:first-child) .page-link {
+        margin-inline-start: -2px;
+    }
+}
+
+.nav-tabs:not(.more-nav),
+.nav-pills:not(.more-nav) {
+    --#{$prefix}nav-link-color: #{$brightsharp-text-color};
+    --#{$prefix}nav-link-hover-color: #{$brightsharp-text-color};
+    --#{$prefix}nav-link-font-weight: #{$font-weight-semibold};
+    --#{$prefix}nav-tabs-border-width: 2px;
+    --#{$prefix}nav-tabs-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}nav-tabs-border-radius: 0;
+    --#{$prefix}nav-tabs-link-hover-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}nav-tabs-link-active-bg: #{$primary};
+    --#{$prefix}nav-tabs-link-active-color: #{color-contrast($primary)};
+    --#{$prefix}nav-tabs-link-active-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}nav-pills-border-radius: 0;
+    --#{$prefix}nav-pills-link-active-bg: #{$primary};
+    --#{$prefix}nav-pills-link-active-color: #{color-contrast($primary)};
+
+    > .nav-link,
+    > .nav-item > .nav-link {
+        border-radius: 0;
+        box-shadow: none;
+
+        &:hover:not(.active):not(.disabled):not(:disabled) {
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+        }
+
+        &:focus-visible {
+            @include brightsharp-control-focus;
+            outline-offset: -3px;
+        }
+    }
+}
+
+.nav-pills:not(.more-nav) {
+    > .nav-link,
+    > .nav-item > .nav-link {
+        border: 2px solid transparent;
+
+        &.active {
+            border-color: $brightsharp-outline-color;
+        }
+    }
+}
+
+@media (forced-colors: active) {
+    .pagination {
+        --#{$prefix}pagination-border-color: ButtonText;
+        --#{$prefix}pagination-active-border-color: Highlight;
+    }
+
+    .pagination .page-link,
+    .nav-tabs:not(.more-nav) > .nav-link,
+    .nav-tabs:not(.more-nav) > .nav-item > .nav-link,
+    .nav-pills:not(.more-nav) > .nav-link,
+    .nav-pills:not(.more-nav) > .nav-item > .nav-link {
+        &:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

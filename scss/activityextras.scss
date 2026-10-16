@@ -1,0 +1,48 @@
+.path-mod-book .book_toc a:focus-visible,
+.path-mod-book .btn-previous:focus-visible,
+.path-mod-book .btn-next:focus-visible {
+    @include brightsharp-control-focus;
+    outline-offset: -3px;
+}
+
+.path-mod-book .btn-previous,
+.path-mod-book .btn-next {
+    border-radius: 0;
+}
+
+.path-mod-lesson .slideshow,
+.path-mod-lesson .password-form .generalbox,
+.path-mod-workshop .submission-full,
+.path-mod-workshop .assessment-full,
+.path-mod-data .defaulttemplate-listentry,
+#page-mod-data-view div#data_adv_form,
+.path-mod-glossary .glossarypost:not(.continuous) {
+    border: 2px solid $brightsharp-outline-color;
+    border-radius: 0;
+}
+
+.path-mod-workshop .userplan {
+    border-color: $brightsharp-outline-color;
+    border-radius: 0;
+}
+
+.path-mod-workshop .userplan dt {
+    font-weight: $font-weight-bold;
+}
+
+#page-mod-data-view .notapproved,
+.path-mod-glossary .entrybox,
+.path-mod-h5pactivity iframe.h5p-player {
+    border-radius: 0;
+}
+
+@media (forced-colors: active) {
+    .path-mod-lesson .slideshow,
+    .path-mod-workshop .submission-full,
+    .path-mod-workshop .assessment-full,
+    .path-mod-data .defaulttemplate-listentry,
+    #page-mod-data-view div#data_adv_form,
+    .path-mod-glossary .glossarypost:not(.continuous) {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+    }
+}

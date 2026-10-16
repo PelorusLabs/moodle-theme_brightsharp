@@ -1,0 +1,50 @@
+.pagelayout-login #page {
+    background-color: $brightsharp-page-background-color;
+}
+
+.login-layout-left .login-layout-left-content,
+.pagelayout-login .login-container {
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+    background-color: $brightsharp-surface-color;
+    color: $brightsharp-text-color;
+    box-shadow: $brightsharp-shadow-large $brightsharp-shadow-large 0 $brightsharp-outline-color;
+}
+
+.pagelayout-login .login-container {
+    padding: $spacer;
+
+    .login-form {
+        .login-form-username > .form-control,
+        .login-form-password > .form-control,
+        .login-form-password > .toggle-sensitive-wrapper {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .pagelayout-login .login-container {
+        padding: $spacer * 2;
+    }
+}
+
+.login-container {
+    .login-separator {
+        border-color: $brightsharp-outline-color;
+    }
+
+    .login-identityprovider-btn {
+        border-color: $brightsharp-outline-color;
+        border-radius: 0;
+    }
+}
+
+@media (forced-colors: active) {
+    .login-layout-left .login-layout-left-content,
+    .pagelayout-login .login-container {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+        box-shadow: none;
+    }
+}

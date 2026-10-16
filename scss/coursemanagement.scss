@@ -1,0 +1,97 @@
+#course-category-listings {
+    #category-listing > .category-listing,
+    #course-listing > .course-listing,
+    #course-detail > .course-detail {
+        background-color: $brightsharp-surface-color;
+        color: $brightsharp-text-color;
+        border: $brightsharp-border-width solid $brightsharp-outline-color;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    #course-listing > .course-listing:not(.card) {
+        padding: $spacer;
+
+        > h3 {
+            border-bottom: $brightsharp-border-width solid $brightsharp-outline-color;
+            margin-bottom: $spacer;
+        }
+    }
+
+    .list-group {
+        --#{$prefix}list-group-color: #{$brightsharp-text-color};
+        --#{$prefix}list-group-bg: #{$brightsharp-surface-color};
+        --#{$prefix}list-group-border-color: #{$brightsharp-outline-color};
+        --#{$prefix}list-group-border-radius: 0;
+        --#{$prefix}list-group-action-color: #{$brightsharp-text-color};
+        --#{$prefix}list-group-action-hover-color: #{$brightsharp-text-color};
+        --#{$prefix}list-group-action-hover-bg: #{mix($brightsharp-outline-color, $brightsharp-surface-color, 10%)};
+        --#{$prefix}list-group-action-active-color: #{$brightsharp-text-color};
+        --#{$prefix}list-group-action-active-bg: #{mix($brightsharp-outline-color, $brightsharp-surface-color, 10%)};
+    }
+
+    .listitem.list-group-item {
+        border-radius: 0;
+        box-shadow: none;
+
+        // Retain Boost's selected-row border and its matching padding.
+        &[data-selected="1"]:not(.highlight) {
+            background-color: mix($primary, $brightsharp-surface-color, 15%);
+        }
+    }
+
+    .categoryname,
+    .coursename {
+        overflow-wrap: anywhere;
+    }
+
+    .bulk-actions {
+        border-top: 2px solid $brightsharp-outline-color;
+        padding-block-start: $spacer;
+
+        .pair-value > div {
+            flex-wrap: wrap;
+            gap: $spacer * .5;
+        }
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+        row-gap: $spacer * .25;
+    }
+
+    .listitem:focus-visible,
+    .listitem a:focus-visible,
+    .card-header:focus-visible,
+    .card-title:focus-visible {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+}
+
+@media (forced-colors: active) {
+    #course-category-listings {
+        #category-listing > .category-listing,
+        #course-listing > .course-listing,
+        #course-detail > .course-detail,
+        #course-listing > .course-listing:not(.card) > h3,
+        .bulk-actions {
+            border-color: CanvasText; // stylelint-disable-line csstree/validator
+        }
+
+        .list-group {
+            --#{$prefix}list-group-border-color: CanvasText; // stylelint-disable-line csstree/validator
+        }
+
+        .listitem.list-group-item[data-selected="1"] {
+            border-left-color: Highlight;
+        }
+
+        .listitem:focus-visible,
+        .listitem a:focus-visible,
+        .card-header:focus-visible,
+        .card-title:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

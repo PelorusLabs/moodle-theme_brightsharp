@@ -1,0 +1,60 @@
+.card {
+    --#{$prefix}card-border-width: #{$brightsharp-border-width};
+    --#{$prefix}card-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}card-border-radius: 0;
+    --#{$prefix}card-inner-border-radius: 0;
+    --#{$prefix}card-bg: #{$brightsharp-surface-color};
+    --#{$prefix}card-cap-bg: transparent;
+    --#{$prefix}card-box-shadow: none;
+
+    border-radius: 0;
+    box-shadow: none;
+
+    > .card-header,
+    > .card-footer {
+        border-color: inherit;
+    }
+
+    .card-title {
+        font-weight: $font-weight-bold;
+    }
+}
+
+// Explicit elevation utilities retain their intent, but use hard rather than soft shadows.
+.card.shadow-sm {
+    box-shadow: $brightsharp-shadow-small $brightsharp-shadow-small 0 $brightsharp-outline-color !important; // stylelint-disable-line declaration-no-important
+}
+
+.card.shadow {
+    box-shadow: $brightsharp-shadow-medium $brightsharp-shadow-medium 0 $brightsharp-outline-color !important; // stylelint-disable-line declaration-no-important
+}
+
+.card.shadow-lg {
+    box-shadow: $brightsharp-shadow-large $brightsharp-shadow-large 0 $brightsharp-outline-color !important; // stylelint-disable-line declaration-no-important
+}
+
+.card.brightsharp-card-raised {
+    box-shadow: $brightsharp-shadow-medium $brightsharp-shadow-medium 0 $brightsharp-outline-color;
+}
+
+.brightsharp-accent-panel {
+    border-inline-start: .5rem solid $brightsharp-accent-color;
+    border-radius: 0;
+}
+
+@media (forced-colors: active) {
+    .brightsharp-accent-panel {
+        border-inline-start-color: CanvasText; // stylelint-disable-line csstree/validator
+    }
+
+    .card {
+        --#{$prefix}card-border-color: CanvasText; // stylelint-disable-line csstree/validator
+    }
+
+    .card.shadow,
+    .card.shadow-sm,
+    .card.shadow-lg,
+    .card.brightsharp-card-raised {
+        box-shadow: none !important; // stylelint-disable-line declaration-no-important
+    }
+}

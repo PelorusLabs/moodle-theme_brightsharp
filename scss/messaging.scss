@@ -1,0 +1,131 @@
+[data-region="right-hand-drawer"]:has(> [data-region="message-drawer"]) {
+    border-inline-start: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.message-app[data-region="message-drawer"] {
+    background-color: $brightsharp-surface-color;
+    color: $brightsharp-text-color;
+
+    .header-container,
+    .footer-container,
+    .closewidget {
+        background-color: $brightsharp-surface-color;
+    }
+
+    // Override only neutral surfaces, not unread badges or semantic controls.
+    .header-container > [data-region="view-conversation"],
+    .footer-container > [data-region="view-conversation"],
+    [data-region="view-settings"],
+    [data-region="members-list-container"],
+    [data-region="all-contacts-container"],
+    [data-region="messages-container"],
+    [data-region="confirm-dialogue"] {
+        background-color: $brightsharp-surface-color !important; // stylelint-disable-line declaration-no-important
+    }
+
+    .section.card {
+        box-shadow: none;
+
+        > .card-header {
+            background-color: $brightsharp-surface-color;
+            border-bottom: 1px solid $brightsharp-outline-color;
+        }
+    }
+
+    .list-group .list-group-item {
+        --#{$prefix}list-group-bg: #{$brightsharp-surface-color};
+        --#{$prefix}list-group-color: #{$brightsharp-text-color};
+        --#{$prefix}list-group-border-color: #{mix($brightsharp-outline-color, $brightsharp-surface-color, 25%)};
+
+        border-radius: 0;
+        box-shadow: none;
+
+        &:hover:not(.active),
+        &:focus:not(.active) {
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+            color: $brightsharp-text-color;
+        }
+
+        &.active,
+        &.active:hover,
+        &.active:focus {
+            background-color: $primary;
+            color: color-contrast($primary);
+            border-color: $primary;
+        }
+    }
+
+    .clickable:hover {
+        filter: none;
+    }
+
+    .message {
+        border: 1px solid mix($brightsharp-outline-color, $brightsharp-surface-color, 45%);
+        border-radius: 0 !important; // stylelint-disable-line declaration-no-important
+        box-shadow: none;
+
+        &.send {
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 12%);
+            color: $brightsharp-text-color;
+        }
+
+        &.received {
+            background-color: $brightsharp-surface-color;
+            color: $brightsharp-text-color;
+        }
+
+        &.send .time,
+        &.received .time {
+            color: mix($brightsharp-text-color, $brightsharp-surface-color, 80%);
+        }
+
+        .tail {
+            display: none;
+        }
+
+        &[aria-checked="true"] {
+            border-color: $primary;
+            outline: 2px solid $primary;
+            outline-offset: -2px;
+        }
+    }
+
+    .day {
+        color: $brightsharp-text-color;
+        font-weight: $font-weight-bold;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    .message:focus-visible,
+    .overview-section-toggle:focus-visible {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+}
+
+@media (forced-colors: active) {
+    [data-region="right-hand-drawer"]:has(> [data-region="message-drawer"]) {
+        border-inline-start-color: CanvasText; // stylelint-disable-line csstree/validator
+    }
+
+    .message-app[data-region="message-drawer"] {
+        .message {
+            border-color: CanvasText; // stylelint-disable-line csstree/validator
+
+            &[aria-checked="true"] {
+                border-color: Highlight;
+                outline-color: Highlight;
+            }
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        .message:focus-visible,
+        .overview-section-toggle:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

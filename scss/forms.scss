@@ -1,0 +1,291 @@
+$brightsharp-input-shadow-offset: $brightsharp-shadow-small !default;
+$brightsharp-check-mark-color: color-contrast($primary) !default;
+// Keep relational selectors opaque to the bundled SCSS compiler's extend handling.
+$brightsharp-input-group: unquote(".input-group:has(> .form-control, > .form-select, > .form-floating)");
+
+.form-control,
+.form-select {
+    color: $brightsharp-text-color;
+    background-color: $brightsharp-surface-color;
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: $brightsharp-input-shadow-offset $brightsharp-input-shadow-offset 0 $brightsharp-outline-color;
+
+    &:focus {
+        color: $brightsharp-text-color;
+        background-color: $brightsharp-surface-color;
+        border-color: $brightsharp-outline-color;
+        @include brightsharp-control-focus;
+    }
+
+    &:disabled,
+    &[readonly] {
+        background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+        box-shadow: none;
+    }
+
+    &:disabled {
+        color: mix($brightsharp-text-color, $brightsharp-surface-color, 70%);
+        border-color: $brightsharp-outline-color;
+    }
+}
+
+.form-control {
+    &::placeholder {
+        color: mix($brightsharp-text-color, $brightsharp-surface-color, 70%);
+    }
+
+    &::file-selector-button {
+        color: color-contrast($primary-button-color);
+        background-color: $primary-button-color;
+        border-inline-end: $brightsharp-border-width solid $brightsharp-outline-color;
+        font-weight: $font-weight-bold;
+    }
+
+    &:hover:not(:disabled):not([readonly])::file-selector-button {
+        background-color: shade-color($primary-button-color, 10%);
+        color: color-contrast(shade-color($primary-button-color, 10%));
+    }
+}
+
+.form-select {
+    --#{$prefix}form-select-bg-img: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$brightsharp-text-color}' stroke-linecap='square' stroke-linejoin='miter' stroke-width='3' d='m2 5 6 6 6-6'/></svg>"))};
+
+    &:-moz-focusring {
+        color: $brightsharp-text-color;
+        text-shadow: none;
+    }
+}
+
+.input-group-text {
+    color: $brightsharp-text-color;
+    background-color: $brightsharp-surface-color;
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+}
+
+.simplesearchform .input-group input.form-control {
+    border-radius: 0;
+}
+
+.simplesearchform .input-group input.form-control.rounded {
+    border-radius: 0 !important; // stylelint-disable-line declaration-no-important
+}
+
+.input-group > .form-control.rounded-start {
+    border-radius: 0 !important; // stylelint-disable-line declaration-no-important
+}
+
+.input-group {
+    > label[for^="searchinput-"] {
+        position: absolute;
+        margin: 0;
+    }
+
+    > .form-control,
+    > .form-select,
+    > .input-group-text,
+    > .btn,
+    > .form-floating > .form-control,
+    > .form-floating > .form-select {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    > .form-control:not(:first-child),
+    > .form-select:not(:first-child),
+    > .input-group-text:not(:first-child),
+    > .btn:not(:first-child),
+    > .form-floating:not(:first-child) {
+        margin-left: -$brightsharp-border-width;
+    }
+
+    #{$brightsharp-input-group}:not(.has-validation) {
+        box-shadow: $brightsharp-input-shadow-offset $brightsharp-input-shadow-offset 0 $brightsharp-outline-color;
+
+        &:focus-within {
+            box-shadow: none;
+        }
+    }
+
+    > .btn:not(.btn-link):not(.btn-icon) {
+        &,
+        &:hover,
+        &:active,
+        &.active,
+        &.show,
+        &:focus-visible {
+            box-shadow: none;
+        }
+    }
+}
+
+.form-check-input {
+    background-color: $brightsharp-surface-color;
+    border: 2px solid $brightsharp-outline-color;
+    box-shadow: none;
+
+    &[type="checkbox"] {
+        border-radius: 0;
+    }
+
+    &[type="radio"] {
+        border-radius: 50%;
+    }
+
+    &:checked,
+    &[type="checkbox"]:indeterminate {
+        background-color: $primary;
+        border-color: $brightsharp-outline-color;
+    }
+
+    &:checked[type="checkbox"] {
+        --#{$prefix}form-check-bg-image: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$brightsharp-check-mark-color}' stroke-linecap='square' stroke-linejoin='miter' stroke-width='3' d='m4 10 4 4 8-8'/></svg>"))};
+    }
+
+    &:checked[type="radio"] {
+        --#{$prefix}form-check-bg-image: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><circle cx='10' cy='10' r='4' fill='#{$brightsharp-check-mark-color}'/></svg>"))};
+    }
+
+    &[type="checkbox"]:indeterminate {
+        --#{$prefix}form-check-bg-image: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path stroke='#{$brightsharp-check-mark-color}' stroke-width='3' d='M4 10h12'/></svg>"))};
+    }
+
+    &:focus {
+        border-color: $brightsharp-outline-color;
+        @include brightsharp-control-focus;
+    }
+}
+
+.form-switch .form-check-input {
+    border-radius: 0;
+    --#{$prefix}form-switch-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><rect x='4' y='4' width='12' height='12' fill='#{$brightsharp-text-color}'/></svg>"))};
+
+    &:focus {
+        --#{$prefix}form-switch-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><rect x='4' y='4' width='12' height='12' fill='#{$brightsharp-text-color}'/></svg>"))};
+    }
+
+    &:checked,
+    &:checked:focus {
+        --#{$prefix}form-switch-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><rect x='4' y='4' width='12' height='12' fill='#{$brightsharp-check-mark-color}'/></svg>"))};
+    }
+
+}
+
+// Match Bootstrap's validation specificity without removing feedback icons or labels.
+@each $state, $colour in ("valid": $success, "invalid": $danger) {
+    .form-control,
+    .form-select,
+    .form-check-input {
+        @include form-validation-state-selector($state) {
+            border-color: $colour;
+
+            &:focus {
+                @include brightsharp-control-focus;
+            }
+
+            .form-check-input {
+                @include form-validation-state-selector($state) {
+                    &:checked {
+                        background-color: $primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+    &[aria-invalid="true"] {
+        border-color: $danger;
+
+        &:focus {
+            @include brightsharp-control-focus;
+        }
+    }
+}
+
+.form-range {
+    &:focus-visible {
+        @include brightsharp-control-focus;
+    }
+
+    @each $thumb in ("::-webkit-slider-thumb", "::-moz-range-thumb") {
+        &#{$thumb} {
+            background-color: $primary;
+            border: 2px solid $brightsharp-outline-color;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        &:focus#{$thumb} {
+            box-shadow: none;
+        }
+
+        &:disabled#{$thumb} {
+            background-color: $form-range-thumb-disabled-bg;
+        }
+    }
+
+    @each $track in ("::-webkit-slider-runnable-track", "::-moz-range-track") {
+        &#{$track} {
+            background-color: $brightsharp-surface-color;
+            border: 1px solid $brightsharp-outline-color;
+            border-radius: 0;
+        }
+    }
+}
+
+@media (forced-colors: active) {
+    #{$brightsharp-input-group}:not(.has-validation) {
+        box-shadow: none;
+    }
+
+    .form-control,
+    .form-select,
+    .form-check-input {
+        border-color: ButtonText;
+        box-shadow: none;
+
+        &:focus {
+            outline-color: Highlight;
+        }
+    }
+
+    .form-check-input,
+    .form-range {
+        appearance: auto;
+    }
+
+    .form-switch .form-check-input {
+        background-image: none;
+    }
+
+    .form-range:focus-visible {
+        outline-color: Highlight;
+    }
+
+    @each $state in ("valid", "invalid") {
+        .form-control,
+        .form-select,
+        .form-check-input {
+            @include form-validation-state-selector($state) {
+                border-color: ButtonText;
+
+                &:focus {
+                    outline-color: Highlight;
+                }
+            }
+        }
+    }
+
+    .form-control,
+    .form-select,
+    .form-check-input {
+        &[aria-invalid="true"] {
+            border-color: ButtonText;
+        }
+    }
+}

@@ -1,0 +1,125 @@
+.alert {
+    --#{$prefix}alert-border: #{$brightsharp-border-width} solid var(--#{$prefix}alert-border-color);
+    --#{$prefix}alert-border-radius: 0;
+
+    border-radius: 0;
+    box-shadow: none;
+
+    a:not(.btn) {
+        text-decoration: underline;
+        text-underline-offset: .15em;
+    }
+}
+
+.toast {
+    --#{$prefix}toast-color: #{$brightsharp-text-color};
+    --#{$prefix}toast-bg: #{$brightsharp-surface-color};
+    --#{$prefix}toast-border-width: #{$brightsharp-border-width};
+    --#{$prefix}toast-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}toast-border-radius: 0;
+    --#{$prefix}toast-box-shadow: #{$brightsharp-shadow-small} #{$brightsharp-shadow-small} 0 #{$brightsharp-outline-color};
+    --#{$prefix}toast-header-color: inherit;
+    --#{$prefix}toast-header-bg: transparent;
+    --#{$prefix}toast-header-border-color: #{$brightsharp-outline-color};
+
+    border-radius: 0;
+
+    .toast-header {
+        border-radius: 0;
+    }
+
+    .toast-title {
+        font-weight: $font-weight-bold;
+    }
+}
+
+.alert,
+.toast {
+    .btn-close {
+        border-radius: 0;
+        box-shadow: none;
+
+        &:hover {
+            outline: 2px solid currentColor;
+            outline-offset: -2px;
+        }
+
+        &:focus-visible {
+            @include brightsharp-control-focus;
+            outline-offset: -3px;
+        }
+    }
+}
+
+.popover-region-notifications {
+    .popover-region-container {
+        color: $brightsharp-text-color;
+        background-color: $brightsharp-surface-color;
+        border: $brightsharp-border-width solid $brightsharp-outline-color;
+        border-radius: 0;
+        box-shadow: $brightsharp-shadow-large $brightsharp-shadow-large 0 $brightsharp-outline-color;
+    }
+
+    .popover-region-header-container,
+    .popover-region-footer-container {
+        border-color: $brightsharp-outline-color;
+        background-color: $brightsharp-surface-color;
+    }
+
+    .popover-region-header-text {
+        font-weight: $font-weight-bold;
+    }
+
+    .popover-region-toggle {
+        &::before {
+            border-bottom-color: $brightsharp-outline-color;
+        }
+
+        &::after {
+            border-bottom-color: $brightsharp-surface-color;
+        }
+    }
+
+    .content-item-container {
+        border-radius: 0;
+        box-shadow: none;
+
+        &:hover,
+        &.unread:hover {
+            color: color-contrast($primary);
+
+            .content-item-footer .timestamp {
+                color: inherit;
+            }
+        }
+    }
+
+    .popover-region-container a:focus-visible,
+    .popover-region-container button:focus-visible {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+}
+
+@media (forced-colors: active) {
+    .alert {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+    }
+
+    .toast {
+        --#{$prefix}toast-border-color: CanvasText; // stylelint-disable-line csstree/validator
+        --#{$prefix}toast-box-shadow: none;
+    }
+
+    .popover-region-notifications .popover-region-container {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+        box-shadow: none;
+    }
+
+    .alert .btn-close:focus-visible,
+    .toast .btn-close:focus-visible,
+    .popover-region-notifications .popover-region-container a:focus-visible,
+    .popover-region-notifications .popover-region-container button:focus-visible {
+        outline-color: Highlight;
+    }
+}

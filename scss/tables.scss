@@ -1,0 +1,79 @@
+.course-overview.table-responsive.rounded {
+    border-radius: 0 !important; // stylelint-disable-line declaration-no-important
+}
+
+#course-overview-page .course-overview.table-responsive {
+    // Override the border, border-secondary, border-1, and pt-2 utilities on the wrapper.
+    border: $brightsharp-border-width solid $table-border-color !important; // stylelint-disable-line declaration-no-important
+    padding-top: 0 !important; // stylelint-disable-line declaration-no-important
+
+    > .course-overview-table.table {
+        border: 0;
+    }
+}
+
+.table,
+.generaltable {
+    border: $brightsharp-border-width solid var(--#{$prefix}table-border-color, #{$table-border-color});
+    border-radius: 0;
+
+    > thead > tr > th,
+    > thead > tr > td {
+        font-weight: $font-weight-bold;
+        border-bottom: $brightsharp-border-width solid var(--#{$prefix}table-border-color, #{$table-border-color});
+    }
+
+    a:not(.btn):not(.dropdown-item) {
+        text-underline-offset: .15em;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:focus-visible {
+            @include brightsharp-control-focus;
+            outline-offset: -3px;
+        }
+    }
+}
+
+.generaltable:not(.table) {
+    color: $brightsharp-text-color;
+    background-color: $brightsharp-surface-color;
+
+    > tbody > tr > td,
+    > tbody > tr > th {
+        border-top: 1px solid $table-border-color;
+    }
+}
+
+.table-borderless {
+    border: 0;
+
+    > thead > tr > th,
+    > thead > tr > td,
+    > tbody > tr > th,
+    > tbody > tr > td {
+        border: 0;
+    }
+}
+
+@media (forced-colors: active) {
+    #course-overview-page .course-overview.table-responsive {
+        border-color: CanvasText !important; // stylelint-disable-line declaration-no-important, csstree/validator
+    }
+
+    .table,
+    .generaltable {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+
+        > thead > tr > th,
+        > thead > tr > td {
+            border-bottom-color: CanvasText; // stylelint-disable-line csstree/validator
+        }
+
+        a:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

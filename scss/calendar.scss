@@ -1,0 +1,101 @@
+.maincalendar .calendarmonth,
+.block .minicalendar {
+    background-color: $brightsharp-surface-color;
+    color: $brightsharp-text-color;
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: none;
+
+    > thead > tr > th {
+        font-weight: $font-weight-bold;
+        border-bottom: 1px solid $brightsharp-outline-color;
+    }
+}
+
+.maincalendar .calendarmonth {
+    td .day-number-circle,
+    td.today .day-number-circle,
+    .calendar-circle {
+        border-radius: 0;
+    }
+
+    td.today .day-number-circle {
+        background-color: $primary;
+        color: color-contrast($primary);
+    }
+
+    td a.day:focus {
+        @include brightsharp-control-focus;
+        border-radius: 0;
+        outline-offset: -3px;
+    }
+}
+
+@media (min-width: 769px) {
+    #page-calendar-view #region-main .maincalendar .calendarwrapper .calendarmonth td > div {
+        height: 7em;
+        overflow-y: auto;
+    }
+}
+
+// An inset marker leaves mini-calendar event and duration colours visible.
+.block .minicalendar td.today {
+    outline: 2px solid $brightsharp-outline-color;
+    outline-offset: -2px;
+}
+
+.maincalendar .event > .card {
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0 !important; // stylelint-disable-line declaration-no-important
+    box-shadow: none;
+
+    > .card-header,
+    > .card-footer {
+        border-color: $brightsharp-outline-color;
+        border-radius: 0;
+    }
+}
+
+.block_calendar_upcoming [data-region="event-item"] {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.maincalendar,
+.block_calendar_month,
+.block_calendar_upcoming {
+    a:not(.btn):focus-visible {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+}
+
+@media (forced-colors: active) {
+    .maincalendar .calendarmonth,
+    .block .minicalendar,
+    .maincalendar .event > .card {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+    }
+
+    .block .minicalendar td.today {
+        outline-color: Highlight;
+    }
+
+    .maincalendar .calendarmonth td.today .day-number-circle {
+        background-color: Highlight;
+        color: HighlightText;
+        outline: 1px solid Highlight;
+    }
+
+    .maincalendar,
+    .block_calendar_month,
+    .block_calendar_upcoming {
+        a:not(.btn):focus-visible {
+            outline-color: Highlight;
+        }
+    }
+
+    .maincalendar .calendarmonth td a.day:focus {
+        outline-color: Highlight;
+    }
+}

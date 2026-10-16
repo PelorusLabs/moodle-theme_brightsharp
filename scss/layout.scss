@@ -1,0 +1,39 @@
+html {
+    background-color: $brightsharp-page-background-color;
+}
+
+#page.drawers .main-inner {
+    background-color: $brightsharp-page-background-color;
+}
+
+.path-admin .block_settings.card {
+    --#{$prefix}card-bg: #{$brightsharp-page-background-color};
+}
+
+@include media-breakpoint-up(lg) {
+    $reportbuilder-clearance: 2px - 1px + 6px;
+    $reportbuilder-content-top: 83px + $reportbuilder-clearance;
+    $reportbuilder-sidebar-top: $navbar-height + $reportbuilder-content-top + 20px;
+
+    .path-admin-reportbuilder.pagelayout-popup .dynamictabs .nav-tabs {
+        background-color: $brightsharp-page-background-color;
+        // Boost uses this strip to simulate bottom padding beneath the fixed tabs.
+        box-shadow: 0 1.25rem 0 $brightsharp-page-background-color;
+    }
+
+    .path-admin-reportbuilder.pagelayout-popup {
+        .dynamictabs .tab-content {
+            // Clear the thicker tab border plus the search field's outward focus outline.
+            padding-top: $reportbuilder-content-top;
+        }
+
+        .reportbuilder-sidebar-menu .reportbuilder-sidebar-menu-cards {
+            max-height: calc(100vh - #{$reportbuilder-sidebar-top} - 52px);
+        }
+
+        .reportbuilder-sidebar-settings,
+        .reportbuilder-report[data-editing] .reportbuilder-report-container {
+            max-height: calc(100vh - #{$reportbuilder-sidebar-top});
+        }
+    }
+}

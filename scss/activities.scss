@@ -1,0 +1,167 @@
+.modchooser.modal-dialog {
+    .modal-content {
+        color: $brightsharp-text-color;
+        background-color: $brightsharp-surface-color;
+        border: $brightsharp-border-width solid $brightsharp-outline-color;
+        border-radius: 0;
+        box-shadow: $brightsharp-shadow-large $brightsharp-shadow-large 0 $brightsharp-outline-color;
+    }
+
+    .modal-header,
+    .modal-footer {
+        border-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 30%);
+    }
+}
+
+.modchoosercontainer .modchoosernav {
+    .nav-link {
+        border-radius: 0;
+
+        &:not(.active) {
+            border-color: transparent;
+
+            &:hover {
+                border-color: $brightsharp-outline-color;
+                background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+            }
+        }
+
+        &.active {
+            border-color: $brightsharp-outline-color;
+        }
+
+        &:focus-visible {
+            @include brightsharp-control-focus;
+        }
+    }
+}
+
+.modchoosercontent .optionscontainer .option {
+    border: 2px solid $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: none;
+    color: $brightsharp-text-color;
+
+    &:not(.selected) {
+        background-color: $brightsharp-surface-color;
+
+        &:hover {
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%);
+        }
+    }
+
+    &.selected {
+        border-color: $primary;
+    }
+
+    &:focus-visible {
+        @include brightsharp-control-focus;
+    }
+
+    .optioninfo {
+        color: $brightsharp-text-color;
+    }
+
+    .optionaction:focus-visible {
+        @include brightsharp-control-focus;
+    }
+}
+
+.modchooser .optionsummary {
+    color: $brightsharp-text-color;
+    background-color: $brightsharp-surface-color;
+    border: 2px solid $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.path-mod-assign .submissionstatustable .submissionsummarytable {
+    border: 2px solid $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.path-mod-assign .submissionstatus,
+.path-mod-assign .submissionstatusdraft,
+.path-mod-assign .submissionstatussubmitted,
+.path-mod-assign .submissionlocked,
+.path-mod-assign .submissionreopened,
+.path-mod-assign .submissiongraded,
+.path-mod-assign .submissionnotgraded,
+.path-mod-assign .latesubmission,
+.path-mod-assign .earlysubmission,
+.path-mod-assign .gradingreminder {
+    border: 1px solid $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#page-mod-quiz-attempt .qnbutton {
+    border-color: $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: none;
+
+    &.thispage {
+        border-color: $primary;
+    }
+
+    &.thispage .thispageholder {
+        border-color: $primary;
+    }
+
+    &:focus-visible {
+        @include brightsharp-control-focus;
+    }
+}
+
+#page-mod-quiz-attempt .que {
+    .info {
+        color: $brightsharp-text-color;
+        background-color: $brightsharp-surface-color;
+        border: 1px solid $brightsharp-outline-color;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .formulation,
+    .outcome,
+    .comment,
+    .correctness {
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .modchooser.modal-dialog .modal-content,
+    .modchoosercontent .optionscontainer .option,
+    .modchooser .optionsummary,
+    .path-mod-assign .submissionstatustable .submissionsummarytable,
+    .path-mod-assign .submissionstatus,
+    .path-mod-assign .submissionstatusdraft,
+    .path-mod-assign .submissionstatussubmitted,
+    .path-mod-assign .submissionlocked,
+    .path-mod-assign .submissionreopened,
+    .path-mod-assign .submissiongraded,
+    .path-mod-assign .submissionnotgraded,
+    .path-mod-assign .latesubmission,
+    .path-mod-assign .earlysubmission,
+    .path-mod-assign .gradingreminder,
+    #page-mod-quiz-attempt .qnbutton,
+    #page-mod-quiz-attempt .que .info {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+        box-shadow: none;
+    }
+
+    .modchoosercontainer .modchoosernav .nav-link:focus-visible,
+    .modchoosercontent .optionscontainer .option:focus-visible,
+    .modchoosercontent .optionscontainer .option .optionaction:focus-visible,
+    #page-mod-quiz-attempt .qnbutton:focus-visible {
+        outline-color: Highlight;
+    }
+
+    #page-mod-quiz-attempt .qnbutton.thispage,
+    #page-mod-quiz-attempt .qnbutton.thispage .thispageholder {
+        border-color: Highlight;
+    }
+}

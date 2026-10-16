@@ -1,0 +1,52 @@
+.path-mod-assign {
+    [data-region="grade-panel"],
+    [data-region="grading-navigation-panel"],
+    [data-region="grade-actions-panel"] {
+        background-color: $brightsharp-surface-color;
+        color: $brightsharp-text-color;
+        border-color: $brightsharp-outline-color;
+    }
+
+    [data-region="resizer"] {
+        background-color: $brightsharp-outline-color;
+    }
+
+    [data-region="grade-panel"] {
+        .fitem.has-popout,
+        .popout {
+            border: $brightsharp-border-width solid $brightsharp-outline-color;
+            border-radius: 0;
+            background-color: $brightsharp-surface-color;
+        }
+
+        .popout {
+            box-shadow: $brightsharp-shadow-large $brightsharp-shadow-large 0 $brightsharp-outline-color;
+        }
+
+        [data-region="popout-button"]:focus-visible {
+            @include brightsharp-control-focus;
+            outline-offset: -3px;
+        }
+    }
+}
+
+.gradingform_rubric .criterion,
+.gradingform_guide .criterion {
+    border-color: $brightsharp-outline-color;
+    border-radius: 0;
+}
+
+.gradingform_rubric .criterion .levels .level,
+.gradingform_guide .markingguidecomment {
+    border-radius: 0;
+}
+
+@media (forced-colors: active) {
+    .path-mod-assign [data-region="grade-panel"] .fitem.has-popout,
+    .path-mod-assign [data-region="grade-panel"] .popout,
+    .gradingform_rubric .criterion,
+    .gradingform_guide .criterion {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+        box-shadow: none;
+    }
+}

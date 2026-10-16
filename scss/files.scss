@@ -1,0 +1,102 @@
+.filepicker-filelist,
+.filemanager-container {
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+}
+
+.file-picker .fp-content,
+.filemanager .fp-content {
+    background-color: $brightsharp-surface-color;
+    color: $brightsharp-text-color;
+}
+
+.filepicker .moodle-dialogue-wrap,
+.filemanager.moodle-dialogue .moodle-dialogue-wrap {
+    background-color: $brightsharp-surface-color;
+    color: $brightsharp-text-color;
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: $brightsharp-shadow-large $brightsharp-shadow-large 0 $brightsharp-outline-color;
+}
+
+.filepicker.moodle-dialogue-fullscreen .moodle-dialogue-wrap {
+    box-shadow: none;
+}
+
+.file-picker,
+.filemanager {
+    .fp-navbar,
+    .fp-panel-button {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .fp-iconview .fp-thumbnail {
+        border-radius: 0;
+        border-color: $brightsharp-outline-color;
+        box-shadow: none;
+
+        &:hover {
+            border-color: $brightsharp-outline-color;
+            box-shadow: none;
+        }
+
+        img {
+            box-shadow: none;
+        }
+    }
+
+    .fp-viewbar:not(.disabled) a.checked {
+        color: color-contrast($primary);
+        background-color: $primary;
+        border-color: $brightsharp-outline-color;
+    }
+
+    .fp-file:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+}
+
+.file-picker .fp-list .fp-repo.active {
+    background-color: $primary;
+
+    a {
+        color: color-contrast($primary);
+        font-weight: $font-weight-bold;
+    }
+}
+
+.filepicker-filelist .filepicker-container,
+.filemanager.fm-noitems .fm-empty-container,
+.filepicker-filelist .dndupload-target,
+.filemanager-container .dndupload-target {
+    border-radius: 0;
+    border-width: $brightsharp-border-width;
+}
+
+.filepicker-filelist .dndupload-target,
+.filemanager-container .dndupload-target {
+    box-shadow: none;
+}
+
+@media (forced-colors: active) {
+    .filepicker-filelist,
+    .filemanager-container,
+    .filepicker .moodle-dialogue-wrap,
+    .filemanager.moodle-dialogue .moodle-dialogue-wrap {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+        box-shadow: none;
+    }
+
+    .file-picker,
+    .filemanager {
+        .fp-file:focus-visible,
+        a:focus-visible,
+        button:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

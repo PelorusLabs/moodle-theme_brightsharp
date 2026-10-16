@@ -1,0 +1,98 @@
+.reportbuilder-toggle-card {
+    .card-body {
+        border-top: 1px solid $brightsharp-outline-color;
+    }
+
+    .toggle-card-button {
+        font-weight: $font-weight-bold;
+
+        &:focus-visible {
+            @include brightsharp-control-focus;
+            outline-offset: -3px;
+        }
+    }
+}
+
+.reportbuilder-sidebar-menu,
+.reportbuilder-sidebar-settings {
+    .list-group {
+        --#{$prefix}list-group-color: #{$brightsharp-text-color};
+        --#{$prefix}list-group-bg: #{$brightsharp-surface-color};
+        --#{$prefix}list-group-border-color: #{$table-border-color};
+        --#{$prefix}list-group-border-radius: 0;
+    }
+
+    .list-group-item {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    a[data-region="sidebar-item"] {
+        &:hover {
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 10%) !important; // stylelint-disable-line declaration-no-important
+        }
+
+        &:focus-visible {
+            @include brightsharp-control-focus;
+            outline-offset: -3px;
+        }
+    }
+
+    [data-region="empty-message"] {
+        padding: $spacer * .5;
+        border-inline-start: 3px solid $table-border-color;
+        text-align: start;
+    }
+}
+
+.reportbuilder-sidebar-menu > .input-group {
+    > label[for="reportbuilder-sidebar-search"] {
+        position: absolute;
+        margin: 0;
+    }
+
+    > .input-group-text.bg-white {
+        background-color: $brightsharp-surface-color !important; // stylelint-disable-line declaration-no-important
+    }
+}
+
+.reportbuilder-filters-sidebar {
+    background-color: $brightsharp-surface-color;
+    border-bottom-color: $brightsharp-outline-color;
+
+    .filter:not(:nth-last-child(2)) {
+        border-bottom-color: $table-border-color;
+    }
+
+    .filter-name:focus-visible {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+}
+
+.reportbuilder-audiences-container .audience-separator {
+    font-weight: $font-weight-bold;
+
+    &::before,
+    &::after {
+        border-bottom-color: $brightsharp-outline-color;
+    }
+}
+
+.reportbuilder-report table.reportbuilder-table tr {
+    border-radius: 0;
+}
+
+@media (forced-colors: active) {
+    .reportbuilder-toggle-card .card-body,
+    .reportbuilder-filters-sidebar,
+    .reportbuilder-filters-sidebar .filter:not(:nth-last-child(2)) {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+    }
+
+    .reportbuilder-sidebar-menu a[data-region="sidebar-item"]:focus-visible,
+    .reportbuilder-toggle-card .toggle-card-button:focus-visible,
+    .reportbuilder-filters-sidebar .filter-name:focus-visible {
+        outline-color: Highlight;
+    }
+}

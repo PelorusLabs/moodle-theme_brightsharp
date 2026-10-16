@@ -1,0 +1,45 @@
+.path-grade-report-grader .gradeparent {
+    table {
+        border-radius: 0;
+        border-color: $brightsharp-outline-color;
+    }
+
+    .cell {
+        border-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 35%);
+    }
+
+    .heading .cell {
+        font-weight: $font-weight-bold;
+        border-bottom: 2px solid $brightsharp-outline-color;
+    }
+
+    .user.cell {
+        font-weight: $font-weight-semibold;
+    }
+
+    a:focus-visible {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+}
+
+.path-grade .gradetreebox {
+    .category > td,
+    .category > th {
+        font-weight: $font-weight-semibold;
+    }
+}
+
+@media (forced-colors: active) {
+    .path-grade-report-grader .gradeparent {
+        table,
+        .cell,
+        .heading .cell {
+            border-color: CanvasText; // stylelint-disable-line csstree/validator
+        }
+
+        a:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

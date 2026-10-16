@@ -1,0 +1,65 @@
+.accordion {
+    --#{$prefix}accordion-color: #{$brightsharp-text-color};
+    --#{$prefix}accordion-bg: #{$brightsharp-surface-color};
+    --#{$prefix}accordion-border-color: #{$brightsharp-outline-color};
+    --#{$prefix}accordion-border-width: #{$brightsharp-border-width};
+    --#{$prefix}accordion-border-radius: 0;
+    --#{$prefix}accordion-inner-border-radius: 0;
+    --#{$prefix}accordion-btn-color: #{$brightsharp-text-color};
+    --#{$prefix}accordion-btn-bg: #{$brightsharp-surface-color};
+    --#{$prefix}accordion-active-color: #{$brightsharp-text-color};
+    --#{$prefix}accordion-active-bg: #{mix($brightsharp-outline-color, $brightsharp-surface-color, 10%)};
+    --#{$prefix}accordion-btn-focus-box-shadow: none;
+    --#{$prefix}accordion-btn-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$brightsharp-text-color}' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))};
+    --#{$prefix}accordion-btn-active-icon: var(--#{$prefix}accordion-btn-icon);
+
+    .accordion-button {
+        font-family: $headings-font-family;
+        font-weight: $font-weight-bold;
+
+        &:focus-visible {
+            @include brightsharp-control-focus;
+            outline-offset: -3px;
+        }
+    }
+}
+
+.collapsibleregioncaption {
+    font-family: $headings-font-family;
+    font-weight: $font-weight-bold;
+
+    a:focus-visible,
+    &:focus-visible {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+}
+
+@media (forced-colors: active) {
+    .collapsibleregioncaption a:focus-visible,
+    .collapsibleregioncaption:focus-visible {
+        outline-color: Highlight;
+    }
+
+    .accordion {
+        --#{$prefix}accordion-border-color: CanvasText; // stylelint-disable-line csstree/validator
+
+        .accordion-button:focus-visible {
+            outline-color: Highlight;
+        }
+
+        .accordion-button::after {
+            // CSS borders stay visible when background images are suppressed.
+            background-image: none;
+            width: .65rem;
+            height: .65rem;
+            border-inline-end: 2px solid ButtonText;
+            border-bottom: 2px solid ButtonText;
+            transform: rotate(45deg);
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            transform: rotate(225deg);
+        }
+    }
+}

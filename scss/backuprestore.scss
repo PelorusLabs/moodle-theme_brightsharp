@@ -1,0 +1,94 @@
+.path-backup {
+    .mform .grouped_settings.section_level,
+    .mform .grouped_settings.subsection_level,
+    .backup-section,
+    .backup_progress {
+        background-color: $brightsharp-surface-color;
+        color: $brightsharp-text-color;
+        border: $brightsharp-border-width solid $brightsharp-outline-color;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .backup_progress {
+        padding: $spacer;
+        line-height: 2;
+
+        .backup_stage_current {
+            border-bottom: $brightsharp-border-width solid $primary;
+        }
+
+        a.backup_stage {
+            text-decoration: underline;
+
+            &:focus-visible {
+                @include brightsharp-control-focus;
+                outline-offset: -3px;
+            }
+        }
+    }
+
+    .backup-section > .header,
+    .backup-section > h2,
+    .backup-section > h3 {
+        border-bottom: 2px solid $brightsharp-outline-color;
+        padding-block-end: $spacer * .5;
+        margin-block-end: $spacer;
+    }
+
+    .mform .grouped_settings.activity_level {
+        &:nth-of-type(odd) {
+            background-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 5%);
+        }
+
+        &:nth-of-type(even) {
+            background-color: $brightsharp-surface-color;
+        }
+    }
+
+    .detail-pair-label,
+    .detail-pair-value {
+        overflow-wrap: anywhere;
+    }
+
+    .backup_log_contents {
+        border: 2px solid $brightsharp-outline-color;
+        padding: $spacer;
+        overflow-x: auto;
+    }
+
+    .wibbler {
+        border-color: $brightsharp-outline-color;
+    }
+
+    .wibbler,
+    .progress {
+        max-inline-size: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .path-backup {
+        .mform .grouped_settings.section_level,
+        .mform .grouped_settings.subsection_level,
+        .backup-section,
+        .backup_progress,
+        .backup-section > .header,
+        .backup-section > h2,
+        .backup-section > h3,
+        .backup_log_contents,
+        .wibbler {
+            border-color: CanvasText; // stylelint-disable-line csstree/validator
+        }
+
+        .backup_progress .backup_stage_current {
+            border-bottom-color: Highlight;
+        }
+
+        .backup_progress a.backup_stage:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

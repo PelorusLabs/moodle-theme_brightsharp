@@ -1,0 +1,53 @@
+#page-navbar .breadcrumb {
+    --#{$prefix}breadcrumb-bg: transparent;
+    --#{$prefix}breadcrumb-border-radius: 0;
+    --#{$prefix}breadcrumb-divider: "/";
+    --#{$prefix}breadcrumb-divider-color: #{$brightsharp-outline-color};
+    --#{$prefix}breadcrumb-item-padding-x: #{$spacer * .75};
+    --#{$prefix}breadcrumb-item-active-color: #{$brightsharp-text-color};
+
+    border: 0;
+    box-shadow: none;
+
+    .breadcrumb-item {
+        font-weight: $font-weight-semibold;
+
+        a {
+            text-decoration: underline;
+            text-underline-offset: .15em;
+
+            &:focus-visible {
+                @include brightsharp-control-focus;
+                // Keep the ring inside Boost's clipped mobile breadcrumb items.
+                outline-offset: -3px;
+            }
+        }
+
+        &:not(.dimmed_text) {
+            a {
+                color: $link-color;
+
+                &:hover {
+                    color: $link-hover-color;
+                }
+            }
+
+            span,
+            a[aria-current="page"] {
+                color: $brightsharp-text-color;
+                font-weight: $font-weight-bold;
+            }
+        }
+
+        &.active,
+        &:last-child {
+            font-weight: $font-weight-bold;
+        }
+    }
+}
+
+@media (forced-colors: active) {
+    #page-navbar .breadcrumb .breadcrumb-item a:focus-visible {
+        outline-color: Highlight;
+    }
+}

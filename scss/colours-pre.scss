@@ -1,0 +1,16 @@
+$brightsharp-text-color: #171717 !default;
+$brightsharp-link-color: #1746a2 !default;
+$brightsharp-page-background-color: #fffdf5 !default;
+$brightsharp-surface-color: #fff !default;
+$brightsharp-outline-color: #171717 !default;
+
+$body-color: $brightsharp-text-color;
+$link-color: $brightsharp-link-color;
+$body-bg: $brightsharp-page-background-color;
+
+$table-color: $brightsharp-text-color;
+$table-bg: $brightsharp-surface-color;
+$table-border-color: mix($brightsharp-outline-color, $brightsharp-surface-color, 35%);
+$table-striped-bg: rgba($brightsharp-outline-color, .05);
+$table-hover-bg: rgba($brightsharp-outline-color, .075);
+$table-active-bg: rgba($brightsharp-outline-color, .1);

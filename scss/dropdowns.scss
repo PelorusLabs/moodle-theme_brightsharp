@@ -1,0 +1,52 @@
+.dropdown-menu:not(.dropdown-menu-dark) {
+    @include brightsharp-dropdown-panel;
+}
+
+.dropdown-menu .dropdown-item {
+    border-radius: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+
+    &:focus-visible,
+    &.focus,
+    &.dropdown-item-outline:focus-within {
+        @include brightsharp-control-focus;
+        outline-offset: -3px;
+    }
+}
+
+.initialsdropdown.dropdown-menu {
+    .initialbargroups {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .initialbargroups .pagination {
+        flex-wrap: wrap;
+        max-width: 100%;
+        row-gap: $spacer * .25;
+    }
+
+    .initialbargroups .page-item {
+        flex-shrink: 0;
+    }
+
+    .initialbargroups .pagination.pagination-sm {
+        margin-left: 0;
+    }
+}
+
+@media (forced-colors: active) {
+    .dropdown-menu:not(.dropdown-menu-dark) {
+        border-color: CanvasText; // stylelint-disable-line csstree/validator
+        box-shadow: none;
+    }
+
+    .dropdown-menu .dropdown-item {
+        &:focus-visible,
+        &.focus,
+        &.dropdown-item-outline:focus-within {
+            outline-color: Highlight;
+        }
+    }
+}

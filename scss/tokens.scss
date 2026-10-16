@@ -1,0 +1,31 @@
+$primary-button-color: $primary !default;
+$brightsharp-accent-color: #ff90e8 !default;
+$brightsharp-surface-color: #fff !default;
+$brightsharp-text-color: #171717 !default;
+$brightsharp-outline-color: #171717 !default;
+$brightsharp-border-width: 3px !default;
+$brightsharp-focus-color: #1746a2 !default;
+$brightsharp-shadow-small: 2px !default;
+$brightsharp-shadow-medium: 3px !default;
+$brightsharp-shadow-large: 4px !default;
+
+@mixin brightsharp-control-focus {
+    outline: 3px solid $brightsharp-focus-color;
+    outline-offset: 3px;
+    box-shadow: none;
+}
+
+@mixin brightsharp-dropdown-panel {
+    --#{$prefix}dropdown-bg: #{$brightsharp-surface-color};
+    --#{$prefix}dropdown-color: #{$brightsharp-text-color};
+    --#{$prefix}dropdown-link-color: #{$brightsharp-text-color};
+    --#{$prefix}dropdown-link-hover-color: #{$brightsharp-text-color};
+    --#{$prefix}dropdown-link-hover-bg: #{mix($brightsharp-outline-color, $brightsharp-surface-color, 10%)};
+    --#{$prefix}dropdown-link-active-color: #{color-contrast($primary)};
+    --#{$prefix}dropdown-link-active-bg: #{$primary};
+
+    border: $brightsharp-border-width solid $brightsharp-outline-color;
+    border-radius: 0;
+    box-shadow: $brightsharp-shadow-large $brightsharp-shadow-large 0 $brightsharp-outline-color;
+    max-width: calc(100vw - 2 * #{$spacer} - #{$brightsharp-shadow-large});
+}

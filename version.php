@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2026101200;
-$plugin->release = 2026101200;
+$plugin->version = 2026110100;
+$plugin->release = 2026110100;
 $plugin->requires = 2026042000;
 $plugin->component = 'theme_brightsharp';
 $plugin->dependencies = ['theme_boost' => 2026042000];

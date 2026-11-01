@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<libraries>
+  <library>
+    <location>fonts/inter-variable.woff2</location>
+    <name>Inter</name>
+    <description>Variable font used for body text and controls.</description>
+    <version>4.001;git-9221beed3</version>
+    <license>SIL Open Font License</license>
+    <licenseversion>1.1</licenseversion>
+    <repository>https://github.com/rsms/inter</repository>
+    <copyrights>
+      <copyright>2016 The Inter Project Authors (https://github.com/rsms/inter)</copyright>
+    </copyrights>
+  </library>
+  <library>
+    <location>fonts/space-grotesk-variable.woff2</location>
+    <name>Space Grotesk</name>
+    <description>Variable font used for headings.</description>
+    <version>2.000</version>
+    <license>SIL Open Font License</license>
+    <licenseversion>1.1</licenseversion>
+    <repository>https://github.com/floriankarsten/space-grotesk</repository>
+    <copyrights>
+      <copyright>2020 The Space Grotesk Project Authors (https://github.com/floriankarsten/space-grotesk)</copyright>
+    </copyrights>
+  </library>
+</libraries>
